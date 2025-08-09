@@ -1,0 +1,95 @@
+{
+  "info": {
+    "name": "Notes App API",
+    "_postman_id": "notes-api-collection",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Register",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"email\":\"user1@example.com\",\"username\":\"user1\",\"password\":\"password123\"}"
+        },
+        "url": { "raw": "http://localhost:8000/api/auth/register/", "protocol": "http", "host": ["localhost"], "port": "8000", "path": ["api","auth","register",""] }
+      }
+    },
+    {
+      "name": "Login (get token)",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": { "mode": "raw", "raw": "{\"email\":\"user1@example.com\",\"password\":\"password123\"}" },
+        "url": { "raw": "http://localhost:8000/api/auth/token/", "protocol": "http", "host": ["localhost"], "port": "8000", "path": ["api","auth","token",""] }
+      }
+    },
+    {
+      "name": "Refresh token",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": { "mode": "raw", "raw": "{\"refresh\":\"<refresh_token_here>\"}" },
+        "url": { "raw": "http://localhost:8000/api/auth/token/refresh/", "protocol": "http", "host": ["localhost"], "port": "8000", "path": ["api","auth","token","refresh",""] }
+      }
+    },
+    {
+      "name": "Get profile",
+      "request": {
+        "method": "GET",
+        "header": [{ "key": "Authorization", "value": "Bearer {{access_token}}" }],
+        "url": { "raw": "http://localhost:8000/api/auth/me/", "protocol": "http", "host": ["localhost"], "port": "8000", "path": ["api","auth","me",""] }
+      }
+    },
+    {
+      "name": "List/Create Notes",
+      "request": {
+        "method": "GET",
+        "header": [{ "key": "Authorization", "value": "Bearer {{access_token}}" }],
+        "url": { "raw": "http://localhost:8000/api/notes/", "protocol": "http", "host": ["localhost"], "port": "8000", "path": ["api","notes",""] }
+      }
+    },
+    {
+      "name": "Create Note (POST)",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{access_token}}" },
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": { "mode": "raw", "raw": "{\"title\":\"My first note\",\"content\":\"This is the content\"}" },
+        "url": { "raw": "http://localhost:8000/api/notes/", "protocol": "http", "host": ["localhost"], "port": "8000", "path": ["api","notes",""] }
+      }
+    },
+    {
+      "name": "Get a Note (GET)",
+      "request": {
+        "method": "GET",
+        "header": [{ "key": "Authorization", "value": "Bearer {{access_token}}" }],
+        "url": { "raw": "http://localhost:8000/api/notes/{{note_id}}/", "protocol": "http", "host": ["localhost"], "port": "8000", "path": ["api","notes","{{note_id}}",""] }
+      }
+    },
+    {
+      "name": "Update Note (PUT)",
+      "request": {
+        "method": "PUT",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{access_token}}" },
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": { "mode": "raw", "raw": "{\"title\":\"Updated title\",\"content\":\"Updated content\"}" },
+        "url": { "raw": "http://localhost:8000/api/notes/{{note_id}}/", "protocol": "http", "host": ["localhost"], "port": "8000", "path": ["api","notes","{{note_id}}",""] }
+      }
+    },
+    {
+      "name": "Delete Note",
+      "request": {
+        "method": "DELETE",
+        "header": [{ "key": "Authorization", "value": "Bearer {{access_token}}" }],
+        "url": { "raw": "http://localhost:8000/api/notes/{{note_id}}/", "protocol": "http", "host": ["localhost"], "port": "8000", "path": ["api","notes","{{note_id}}",""] }
+      }
+    }
+  ]
+}
