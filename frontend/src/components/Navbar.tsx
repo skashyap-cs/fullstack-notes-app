@@ -1,10 +1,10 @@
 import { Disclosure, Menu } from '@headlessui/react'
 
 const navigation = [
-  { name: 'Dashboard', href: '#', current: true },
-  { name: 'Team', href: '#', current: false },
-  { name: 'Projects', href: '#', current: false },
-  { name: 'Calendar', href: '#', current: false },
+  { name: 'Home', href: '#', current: true },
+  { name: 'Notes', href: '#', current: false },
+  { name: 'Account', href: '#', current: false },
+  { name: 'Login', href: '#', current: false },
 ]
 
 // Utility to join classes conditionally
